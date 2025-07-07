@@ -1,9 +1,12 @@
 provider "aws" {
   region = "us-east-1"
 }
+
+# Creates a Amazon Linux based EC2 instance with 8 GB EBS attached to it and ssh inbound rule enabled
 resource "aws_instance" "java-project-demo" {
     ami = "ami-05ffe3c48a9991133"
     instance_type = "t2.micro"
+    # key-value pair
     key_name = "devopsdemo"
     # security_groups = [ "demo-sg" ] is deprecrated becoz now all EC2 instances are created inside default VPC
     vpc_security_group_ids = [ aws_security_group.demo-sgrp.id ]
@@ -29,6 +32,7 @@ resource "aws_security_group" "demo-sgrp" {
   }
 }
 
+# Inbound security group
 resource "aws_vpc_security_group_ingress_rule" "ssh_access" {
   security_group_id = aws_security_group.demo-sgrp.id
   cidr_ipv4         = "0.0.0.0/0"
@@ -37,6 +41,7 @@ resource "aws_vpc_security_group_ingress_rule" "ssh_access" {
   to_port           = 22
 }
 
+# Outbound security group
 resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   security_group_id = aws_security_group.demo-sgrp.id
   cidr_ipv4         = "0.0.0.0/0"
