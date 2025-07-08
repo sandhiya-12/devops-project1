@@ -2,6 +2,9 @@
 
 
 1. Write playbook for jenkins setup in jenkins-master instance
+   cd /opt
+   vi jenkins-master-setup.yaml
+
    ```sh
    ansible-playbook -i /opt/hosts jenkins-master-setup.yaml --check
    ansible-playbook -i /opt/hosts jenkins-master-setup.yaml
@@ -18,6 +21,9 @@
 
 
 3. Write playbook for maven setup in jenkins-slave instance
+   cd /opt
+   vi jenkins-slave-setup.yaml
+
    ```sh
    ansible-playbook -i /opt/hosts jenkins-slave-setup.yaml --check
    ansible-playbook -i /opt/hosts jenkins-slave-setup.yaml
@@ -28,6 +34,8 @@
    cd /opt/<apache-maven-dir>/bin
    export PATH=/opt/apache-maven-3.9.10/bin:$PATH
    mvn --version
+   java -version
+   javac -version
 
 5. To login again to Jenkins, u can use 
    username: admin
