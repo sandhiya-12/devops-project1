@@ -9,7 +9,7 @@
    `Check-point:`  version number in pom.xml and dockerfile should match   
 2. Create a docker repository in the Jfrog  
     repository name: valaxy-docker
-3. Install `docker pipeline` plugin 
+3. Install `docker pipeline` plugin from Manage Jenkins --> Plugins --> Available Plugins
 
 4. Update Jenkins file with the below stages  
     ```sh 
@@ -46,6 +46,6 @@ Check-point:
 Note: make sure docker service is running on the slave system, and docker should have permissions to /var/run/docker.sock
 
 Check if container is running using
-docker run -dt --name java-app -p 8000:8000 sandy01.jfrog.io/sandy-docker/java-project1:2.1.2
+docker run -dt --name java-app -p 8000:8000 sandy-docker/java-project1:2.1.2
 
 So add 8000 port to inbound security rules of maven slave instance

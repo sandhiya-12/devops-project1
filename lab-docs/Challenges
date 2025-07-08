@@ -35,3 +35,5 @@ or change ansible script to install `openjdk-21-jdk` instead of openjdk-21-jre
 
 >javac -version
 javac 21.0.7
+
+6. After creating docker image from openjdk:8, the docker image doesn't work, couldn't see the `Greetings from Hello World` from <maven-slave-publicip:8080> bcoz java-version in pom.xml is 21, hence use 21 in dockerfile.

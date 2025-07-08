@@ -18,3 +18,5 @@
 
 
 Once it is enabled make changes to source to trigger the build. 
+
+If the jenkins-master instance is stopped and restarted, this webhook has to be modified.

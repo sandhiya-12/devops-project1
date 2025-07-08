@@ -30,10 +30,8 @@
    ```
 
 4. You can check by login to build-node instance,
-   ls /opt
    cd /opt/<apache-maven-dir>/bin
-   export PATH=/opt/apache-maven-3.9.10/bin:$PATH
-   mvn --version
+   /opt/apache-maven-3.9.10/bin/mvn --version
    java -version
    javac -version
 

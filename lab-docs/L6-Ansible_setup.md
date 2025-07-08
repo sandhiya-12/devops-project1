@@ -22,6 +22,7 @@ in this case, we are using /opt is our working directory for Ansible.
     scp -i .\devopsdemo.pem .\devopsdemo.pem ubuntu@54.144.202.35:/home/ubuntu
     sudo su -
     cp /home/ubuntu/devopsdemo.pem /opt
+    chmod 400 /opt/devopsdemo.pem
 
 cd /opt
 vi hosts
