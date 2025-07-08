@@ -29,26 +29,30 @@
    export PATH=/opt/apache-maven-3.9.10/bin:$PATH
    mvn --version
 
+5. To login again to Jenkins, u can use 
+   username: admin
+   pswd: cat  /var/lib/jenkins/secrets/initialAdminPassword from jenkins-master instance
 
+# Further setup:
 
 1. Add credentials 
 2. Add node
    
 ### Add Credentials 
-1. Manage Jenkins --> Manage Credentials --> System --> Global credentials --> Add credentials
+1. Manage Jenkins --> Credentials --> System --> Global credentials --> Add credentials
 2. Provide the below info to add credentials   
    kind: `ssh username with private key`  
    Scope: `Global`     
-   ID: `maven_slave`    
-   Username: `ec2-user`  
-   private key: `dpo.pem key content`  
+   ID: `maven-slave-cred`    
+   Username: `ubuntu`  
+   private key: `devopsdemo.pem key content`  
 
 ### Add node 
    Follow the below setups to add a new slave node to the jenkins 
-1. Goto Manage Jenkins --> Manage nodes and clouds --> New node --> Permanent Agent    
+1. Goto Manage Jenkins --> Nodes  --> New node --> Give name (maven-slave) ,Permanent Agent    
 2. Provide the below info to add the node   
-   Number of executors: `3`   
-   Remote root directory: `/home/ec2-user/jenkins`  
+   Number of executors: `3`   ===> no.of jobs running parallely
+   Remote root directory: `/home/ubuntu/jenkins`  ===> jenkins workspace
    Labels: `maven`  
    Usage: `Use this node as much as possible`  
    Launch method: `Launch agents via SSH`  
@@ -56,3 +60,8 @@
         Credentials: `<Jenkins_Slave_Credentials>`     
         Host Key Verification Strategy: `Non verifying Verification Strategy`     
    Availability: `Keep this agent online as much as possible`  
+
+3. After adding node, it should not show any error and its online.
+   Note: java jdk version in master and slave should be same
+
+

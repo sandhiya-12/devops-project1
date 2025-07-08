@@ -7,9 +7,9 @@
       update_cache: yes
       cache_valid_time: 3600 
 
-  - name: install java 
+  - name: install java jdk
     apt: 
-      name: openjdk-11-jre
+      name: openjdk-21-jdk
       state: present
 
   - name: download maven packages 

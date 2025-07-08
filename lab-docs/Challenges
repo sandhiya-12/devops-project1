@@ -1,0 +1,37 @@
+1. Ansible module for dependencies setup
+2. Ansible setup for jenkins master failed bcoz repo name modified and there is confusion btw 2 repos, the list file that holds repo names is deleted
+3. Java jdk version mismatech between jenkins master and slave during adding node.
+4. when building project using maven, faced build & test issues, bcoz plugin version is not compatible with java jdk 21 in maven.
+
+ [ERROR] Error occurred in starting fork, check output in log
+[ERROR] Process Exit Code: 134
+[ERROR] org.apache.maven.surefire.booter.SurefireBooterForkException: The forked VM terminated without properly saying goodbye. VM crash or System.exit called?
+[ERROR] Command was /bin/sh -c cd /home/ubuntu/jenkins/workspace/java-project-job && /usr/lib/jvm/java-21-openjdk-amd64/bin/java -javaagent:/home/ubuntu/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/home/ubuntu/jenkins/workspace/java-project-job/target/jacoco.exec -Xmx2048m -jar /home/ubuntu/jenkins/workspace/java-project-job/target/surefire/surefirebooter11690947577432701044.jar /home/ubuntu/jenkins/workspace/java-project-job/target/surefire 2025-07-08T04-31-06_855-jvmRun1 surefire17174340888045012181tmp surefire_09607785888174743642tmp
+[ERROR] Error occurred in starting fork, check output in log
+[ERROR] Process Exit Code: 134
+[ERROR] 	at org.apache.maven.plugin.surefire.booterclient.ForkStarter.fork(ForkStarter.java:669)
+
+5. After changing plugin versions, build was failing with java jdk 21, bcoz javac is not installed on maven slave.
+
+[INFO] Compiling 2 source files with javac [debug release 21] to target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.351 s
+[INFO] Finished at: 2025-07-08T04:45:11Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project demo-application: Fatal error compiling: error: release version 21 not supported -> [Help 1]
+
+[Root-cause:]
+root@ip-10-1-1-82:/opt/apache-maven-3.9.10/bin# javac -version
+Command 'javac' not found, but can be installed with
+
+javac install using 
+
+sudo apt update
+sudo apt install openjdk-21-jdk -y
+
+or change ansible script to install `openjdk-21-jdk` instead of openjdk-21-jre
+
+>javac -version
+javac 21.0.7
