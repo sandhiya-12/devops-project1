@@ -10,6 +10,3 @@ Topic to be covered
 6. Create Jenkinsfile from scratch
 7. Create multibranch pipeline
 8. Enable webhook on GitHub
-9. Configure SonarQube and Sonar scanner
-10. Execute the Sonar analysis
-11. Define rules and gates of SonarQube

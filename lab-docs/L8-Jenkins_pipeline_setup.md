@@ -18,10 +18,19 @@
         }
     }
 
+    environment {
+        PATH = "/opt/apache-maven-3.9.10/bin/:$PATH"
+    }
+
     stages {
         stage('Checkout java project') {
             steps {
                 git branch: 'main', url: 'https://github.com/sandhiya-12/java-project1.git'
+            }
+        }
+        stage('Build project') {
+            steps {
+                sh 'mvn clean deploy'
             }
         }
     }
@@ -37,3 +46,12 @@
    ID: `github-cred`    
    Username: `sandhiya-12`  
    password: Personal access token from github (Github settings --> devloper settings --> Personal access token --> Token (classic))
+
+
+
+### Create a multibranch pipeline job (identifies branch using Jenkinsfile and austomatically adds pieline to that branch)
+1. New Item --> give name --> Multibranch Pipeline --> OK
+2. Give display name --> Build Sources: `Git` --> Project Repo: <java-project-github-url> and give above created github credentials
+3. Build Configuration: by Jenkinsfile (default) --> Save
+
+Now, whenever you add a new branch to this repo, `Scan Multibranch Pipeline Now` option checks if Jenkinsfile is present, if its present, add a new pipeline for that branch.
