@@ -22,6 +22,7 @@ to create an ec2 instance, should use 'resource block'
     - instance Type 
     - Keypair
     - VPC
+    - Firewall ( security group)
     - Storage
    
 But among these, AMI id, instance type, and keypair are required arguments.

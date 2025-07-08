@@ -82,4 +82,4 @@ resource "aws_route_table_association" "dpw-rta-public-subent-1" {
 }
 ``` 
 
-after this [terraform v3 file]() looks like this
+after this [terraform v3 file]() looks like this terraform\V3-EC2-with-VPC.tf

@@ -11,4 +11,6 @@ for_each = toset(["master", "slave"])
    }
 ```
 
-after this [terraform v4 file]() looks like this
+Add 3 instances for jenkins-master, jenkins-slave, ansible
+
+after this [terraform v4 file]() looks like this terraform\V3-EC2-with-VPC-foreach.tf

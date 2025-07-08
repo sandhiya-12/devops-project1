@@ -19,8 +19,8 @@ in my system, this path location is C:\Program Files\terraform_1.3.7
    ```
    the output should be something like below 
    ```sh
-   Terraform v1.3.7
-   on windows_386
+   Terraform v1.12.1
+   on windows_amd64
    ```
 
  ### Install Visual Studio code

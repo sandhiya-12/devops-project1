@@ -43,6 +43,15 @@ resource "aws_vpc_security_group_ingress_rule" "ssh_access" {
   to_port           = 22
 }
 
+# Inbound security group
+resource "aws_vpc_security_group_ingress_rule" "jenkins_access" {
+  security_group_id = aws_security_group.demo-sgrp.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 8080
+  ip_protocol       = "tcp"
+  to_port           = 8080
+}
+
 # Outbound security group
 resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   security_group_id = aws_security_group.demo-sgrp.id
