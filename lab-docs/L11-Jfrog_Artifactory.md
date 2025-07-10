@@ -1,11 +1,12 @@
 ## Publish jar file onto Jfrog Artifactory
 1. Create Artifactory account  
 2. Generate an access token  with username  (username must be your email id)
-3. Add username and password under Manage jenkins  ---> credentials  --> (artifactory-cred)
-4. Install Artifactory plugin  
+        JFrog-> Administration -> User management -> Access tokens -> create
+3. Add username and password under Manage jenkins  ---> credentials  --> username(email) with password (access token) as `artifactory-cred`
+4. Install `Artifactory` plugin  
 5. Update Jenkinsfile with jar publish stage   
     ```sh 
-         def registry = 'https://valaxy01.jfrog.io'         ===> jfrog account (mention at top of jenkinsfile)
+         def registry = 'https://sandy01.jfrog.io'         ===> jfrog account (mention at top of jenkinsfile)
              stage("Jar Publish") {
             steps {
                 script {
@@ -35,7 +36,7 @@
 
 Check-point: 
 Ensure below are update
-1. your jfrog account details in place of `https://valaxy01.jfrog.io` in the defination of registry `def registry = 'https://valaxy01.jfrog.io'`
+1. your jfrog account details in place of `https://sandy01.jfrog.io` in the defination of registry `def registry = 'https://sandy01.jfrog.io'`
 2. Credentials id (artifactory-cred) in the place of `artifactory_token` in the  `def server = Artifactory.newServer url:registry+"/artifactory" ,  credentialsId:"artifactory_token"`
 3. Maven repository name in the place of `libs-release-local` in the `"target": "libs-release-local/{1}",`
 

@@ -23,3 +23,6 @@
     }
    ```
  by this time we are ready with our terraform modules to create a cluster 
+
+ Execute the terraform,
+ 2 more EC2 instances are created for kubectl backend and java-eks-01 is created in EKS.

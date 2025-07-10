@@ -2,7 +2,7 @@
 
 1. To create a helm chart template 
    ```sh 
-   helm create ttrend
+   helm create java-project
    ```
 
     by default, it contains 
@@ -13,11 +13,11 @@
 
 2. Replace the template directory with the manifest files and package it
    ```sh
-   helm package ttrend
+   helm package java-project
    ```
 3. Change the version number in the 
    ```sh 
-   helm install ttrend ttrend-0.1.0.tgz
+   helm install java-project java-project-0.1.0.tgz
    ```
 
 4. Create a jenkins job for the deployment 
@@ -26,7 +26,7 @@
           steps {
             script {
                echo '<--------------- Helm Deploy Started --------------->'
-               sh 'helm install ttrend ttrend-0.1.0.tgz'
+               sh 'helm install java-project java-project-0.1.0.tgz'
                echo '<--------------- Helm deploy Ends --------------->'
             }
           }

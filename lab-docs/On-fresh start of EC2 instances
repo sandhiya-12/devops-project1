@@ -1,0 +1,20 @@
+1.create 3 EC2 instances using V3-EC2-with-VPC-foreach.tf
+2.copy pem to /opt to ansible instances
+3.install ansible in ansible instances
+4.create hosts and setup.yaml files
+5.execute yaml files
+6.goto <jenkins-master-public-ip>:8080 and setup jenkins
+7.add credentials for 
+        1. ubuntu & pem --> maven-slave-cred
+        2. email & jfrog access token  --> artifactory-cred
+8.add node for maven (maven-private-ip and maven-slave-cred)
+9.add `artifactory and docker pipeline` plugin
+10.chmod 777 /var/run/docker.sock in maven slave
+11.create a pipeline job and add content of jenkins\Jenkinsfile_v3_docker and execute
+12.you can see the docker images in the maven slave and jar & docker image in jfrog
+13.create the eks cluster using terraform (2 more ec2 instances and eks cluster created)
+14.install kubectl and awscli2 in maven slave
+15.attach to eks cluster
+16.update secret.yaml file
+17.execute kubernetes yaml files
+18.open 8000 in inbound ecurity rules of ec2 backend instances, now http://<backend-ec2-inst-public-ip>:30082 will show application
