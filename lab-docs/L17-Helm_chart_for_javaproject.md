@@ -11,7 +11,7 @@
     - Charts.yaml
     - charts
 
-2. Replace the template directory with the manifest files and package it
+2. `Replace the template directory with the yaml files in kubernetes-jfrog and package it`
    ```sh
    helm package java-project
    ```
@@ -19,8 +19,9 @@
    ```sh 
    helm install java-project java-project-0.1.0.tgz
    ```
+4. Commit the java-project-0.1.0.tgz to java-project1
 
-4. Create a jenkins job for the deployment 
+5. Create a deploy stage to jenkins job for the deployment 
    ```sh 
    stage(" Deploy ") {
           steps {
@@ -33,7 +34,7 @@
         }
    ```
 
-5. To list installed helm deployments
+6. To list installed helm deployments
    ```sh 
    helm list -a
    ```
@@ -41,5 +42,5 @@
 Other useful commands
 1. to change the default namespace to valaxy
    ```sh
-   kubectl config set-context --current --namespace=valaxy
+   kubectl config set-context --current --namespace=java-proj
    ```

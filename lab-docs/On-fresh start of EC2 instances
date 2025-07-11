@@ -11,10 +11,13 @@
 9.add `artifactory and docker pipeline` plugin
 10.chmod 777 /var/run/docker.sock in maven slave
 11.create a pipeline job and add content of jenkins\Jenkinsfile_v3_docker and execute
-12.you can see the docker images in the maven slave and jar & docker image in jfrog
+12.you can see the docker images in the maven-slave and jar & docker image in jfrog
 13.create the eks cluster using terraform (2 more ec2 instances and eks cluster created)
-14.install kubectl and awscli2 in maven slave
-15.attach to eks cluster
-16.update secret.yaml file
-17.execute kubernetes yaml files
-18.open 8000 in inbound ecurity rules of ec2 backend instances, now http://<backend-ec2-inst-public-ip>:30082 will show application
+14.install kubectl, awscli2 and helm in maven-slave
+15.change to ubuntu user and attach to EKS cluster
+16.update secret.yaml file with token
+17.create helm package using the kubernetes yaml files and commit the package to java-project1
+17.execute jenkins\Jenkinsfile_v4_deploy, now helm chart is deployed
+18.open 30082 in inbound security rules of ec2 backend instances, now http://<backend-ec2-inst-public-ip>:30082 will show application with latest changes
+
+Modify the prometheus and grafana services back to original and Delete the aws resources using terraform.

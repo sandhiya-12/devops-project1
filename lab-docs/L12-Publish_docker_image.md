@@ -44,7 +44,7 @@ Check-point:
 2. Match version number in `def version   = '2.1.2'` with pom.xml version number  
 3. Ensure you have updated credentials(artifactory-cred) in the field of `artifactory_token` in `docker.withRegistry(registry, 'artifactory_token'){`
 
-Note: make sure docker service is running on the slave system, and docker should have permissions to /var/run/docker.sock
+Note: make sure docker service is running on the slave system, and docker should have permissions to `/var/run/docker.sock`
 
 Check if container is running using
 docker run -dt --name java-app -p 8000:8000 sandy-docker/java-project1:2.1.2

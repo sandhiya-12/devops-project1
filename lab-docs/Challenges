@@ -1,6 +1,6 @@
 1. Ansible module for dependencies setup
-2. Ansible setup for jenkins master failed bcoz repo name modified and there is confusion btw 2 repos, the list file that holds repo names is deleted
-3. Java jdk version mismatech between jenkins master and slave during adding node.
+2. Ansible setup for jenkins master failed bcoz repo name modified and there is confusion btw 2 repos, so the list file that holds repo names should be deleted.
+3. Java jdk version mismatch between jenkins master and slave during adding node.
 4. when building project using maven, faced build & test issues, bcoz plugin version is not compatible with java jdk 21 in maven.
 
  [ERROR] Error occurred in starting fork, check output in log
@@ -37,3 +37,13 @@ or change ansible script to install `openjdk-21-jdk` instead of openjdk-21-jre
 javac 21.0.7
 
 6. After creating docker image from openjdk:8, the docker image doesn't work, couldn't see the `Greetings from Hello World` from <maven-slave-publicip:8080> bcoz java-version in pom.xml is 21, hence use 21 in dockerfile.
+
+7. When running jenkins pipeline, facing below error to connect to maven slave
+[INFO] Running com.stalin.demo.DemoApplicationTests
+Cannot contact maven-slave: java.lang.InterruptedException 
+
+Soln: Stop and start maven slave instance
+
+8. Image pull failure from the pods if the secret value is not updated.
+
+ Failed to pull image "sandy01.jfrog.io/sandy-docker/java-project1:2.1.2": failed to pull and unpack image "sandy01.jfrog.io/sandy-docker/java-project1:2.1.2": failed to resolve reference "sandy01.jfrog.io/sandy-docker/java-project1:2.1.2": failed to authorize: failed to fetch anonymous token: unexpected status from GET request to https://sandy01.jfrog.io/artifactory/api/docker/sandy-docker/v2/token?scope=repository%3Ajava-project1%3Apull&scope=repository%3Asandy-docker%2Fjava-project1%3Apull&service=sandy01.jfrog.io: 401
