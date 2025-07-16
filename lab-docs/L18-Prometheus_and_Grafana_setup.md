@@ -31,7 +31,7 @@
    ```sh 
    kubectl edit svc prometheus-kube-prometheus-prometheus -n monitoring
    ```
-6. Now a load balancers qith 2 instances are created in the EC2 --> Load Balancer
+6. Now a load balancers with 2 instances are automatically created since we are already in AWS EC2 instance. see in EC2 --> Load Balancer
 
 7. Loginto Prometheus dashboard to monitor application
    https://<ELB-DNS-name>:9090
@@ -53,3 +53,24 @@
     USE - Utilization, Saturation, Errors
    
 12. Even we can check the behavior of each pod, node, and cluster
+
+
+Note: If we are running Helm on EC2 instance and the service type of prometheus and grafana from ClutserIP to Loadbalancer, you can access 
+Prometheus: https://<Prometheus-ELB-DNS-name>:9090
+Grafana: https://<Grafana-ELB-DNS-name>:80
+
+These ELB DNS name can be viewed in EC2 -> LoadBalancers (or) 
+kubectl get svc -n monitoring --> Look for EXTERNAL-IP
+
+If you use minikube or kind, use below port-forwards, change of service type not needed.
+```sh
+kubectl port-forward svc/prometheus-kube-prometheus-prometheus -n monitoring 9090:9090   ---> http://localhost:9090
+kubectl port-forward svc/prometheus-grafana -n monitoring 7080:80          ---> http://localhost:7080
+```
+
+Uninstall prometheus using
+```sh
+helm list -A
+helm uninstall prometheus -n monitoring
+k get all -n monitoring
+```
